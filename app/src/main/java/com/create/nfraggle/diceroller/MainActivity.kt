@@ -10,21 +10,24 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var diceImg: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        findViewById<Button>(R.layout.activity_main.)
+
         val rollBtn: Button = findViewById(R.id.roll_btn)
-        rollBtn.text = "Let's Roll"
         rollBtn.setOnClickListener {
             rollDice()
         }
+
+        diceImg = findViewById(R.id.dice_img)
     }
 
+
+
     private fun rollDice() {
-        val randomInt = Random.nextInt(6) + 1
-        val diceImg: ImageView = findViewById(R.id.dice_img)
-        val drawableResource = when (randomInt) {
+        val drawableResource = when (Random.nextInt(6) + 1) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
